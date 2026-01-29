@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Join Us | Indivisible Lynnwood" description="Join Indivisible Lynnwood and help build progressive power in our community.">
+  <section class="page-header">
+    <div class="container">
+      <h1>Join Us</h1>
+      <p class="page-header-desc">
+        Ready to get involved? Fill out the form below and we'll connect you with our community.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="join-form-wrapper">
+        <form
+          name="join"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/join?success=true"
+          class="join-form"
+        >
+          {/* Honeypot field for spam protection */}
+          <p class="sr-only">
+            <label>
+              Don't fill this out if you're human:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          {/* Hidden form name for Netlify */}
+          <input type="hidden" name="form-name" value="join" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name" class="form-label">
+                First Name <span class="form-required">*</span>
+              </label>
+              <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                class="form-input"
+                required
+                autocomplete="given-name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="last-name" class="form-label">
+                Last Name <span class="form-required">*</span>
+              </label>
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                class="form-input"
+                required
+                autocomplete="family-name"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">
+              Email <span class="form-required">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-input"
+                autocomplete="tel"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="zip" class="form-label">
+                Zip Code <span class="form-required">*</span>
+              </label>
+              <input
+                type="text"
+                id="zip"
+                name="zip"
+                class="form-input"
+                required
+                autocomplete="postal-code"
+                pattern="[0-9]{5}"
+                maxlength="5"
+                inputmode="numeric"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="how-heard" class="form-label">How did you hear about us?</label>
+            <select id="how-heard" name="how-heard" class="form-select">
+              <option value="">Select an option</option>
+              <option value="friend">Friend or family</option>
+              <option value="social-media">Social media</option>
+              <option value="search">Web search</option>
+              <option value="event">At an event</option>
+              <option value="indivisible-national">Indivisible national</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <fieldset class="form-group">
+            <legend class="form-label">I'm interested in:</legend>
+            <div class="form-checkbox-group">
+              <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="attending-meetings" />
+                Attending meetings
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="phone-banking" />
+                Phone banking
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="canvassing" />
+                Canvassing
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="voter-registration" />
+                Voter registration
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="social-media" />
+                Social media / comms
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="events" />
+                Event planning
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="other" />
+                Other
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Anything else you'd like us to know?</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-textarea"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--lg">Join Indivisible Lynnwood</button>
+        </form>
+
+        {/* Success message (shown when redirected with ?success=true) */}
+        <div class="join-success" id="success-message" hidden>
+          <h2>Thank You for Joining!</h2>
+          <p>
+            We've received your information and will be in touch soon. Welcome to
+            Indivisible Lynnwood — together, we'll make a difference.
+          </p>
+          <a href="/" class="btn btn--primary">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Show success message if redirected after form submission */}
+  <script is:inline>
+    if (window.location.search.includes('success=true')) {
+      var form = document.querySelector('.join-form');
+      var success = document.getElementById('success-message');
+      if (form) form.hidden = true;
+      if (success) success.hidden = false;
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding-block: var(--space-2xl);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header-desc {
+    color: var(--color-gray-300);
+    font-size: var(--font-size-lg);
+  }
+
+  .join-form-wrapper {
+    max-width: 640px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (max-width: 480px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .join-success {
+    text-align: center;
+    padding: var(--space-3xl) 0;
+  }
+
+  .join-success h2 {
+    color: var(--color-blue);
+    margin-bottom: var(--space-md);
+  }
+
+  .join-success p {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-700);
+    margin-bottom: var(--space-xl);
+    max-width: 500px;
+    margin-inline: auto;
+  }
+</style>

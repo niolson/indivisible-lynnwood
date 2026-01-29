@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MobilizeEmbed from '../components/MobilizeEmbed.astro';
+---
+
+<BaseLayout title="Events | Indivisible Lynnwood" description="Find upcoming events, meetings, and actions with Indivisible Lynnwood.">
+  <section class="page-header">
+    <div class="container">
+      <h1>Events</h1>
+      <p class="page-header-desc">
+        Join us at upcoming meetings, actions, and community events. Everyone is welcome.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <MobilizeEmbed />
+
+      <div class="events-info">
+        <h2>Can't Find What You're Looking For?</h2>
+        <p>
+          Visit our full events page on Mobilize to see all upcoming activities, or
+          <a href="/join">join our email list</a> to get event notifications sent directly to your inbox.
+        </p>
+        {/* TODO: Replace with actual Mobilize organization URL */}
+        <a
+          href="https://www.mobilize.us/indivisiblelynnwood/"
+          class="btn btn--outline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View All Events on Mobilize
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding-block: var(--space-2xl);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header-desc {
+    color: var(--color-gray-300);
+    font-size: var(--font-size-lg);
+  }
+
+  .events-info {
+    margin-top: var(--space-2xl);
+    text-align: center;
+  }
+
+  .events-info h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .events-info p {
+    color: var(--color-gray-700);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
+    margin-inline: auto;
+  }
+</style>

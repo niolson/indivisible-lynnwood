@@ -1,0 +1,124 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h3 class="footer-heading">Indivisible Lynnwood</h3>
+        <p>
+          A local grassroots organization working to build progressive power in
+          Lynnwood, Washington and the surrounding community.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/events">Events</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/join">Join Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-connect">
+        <h4 class="footer-heading">Connect</h4>
+        <ul class="social-links">
+          {/* TODO: Replace # with actual social media URLs */}
+          <li>
+            <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              Facebook
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+              X / Twitter
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          </li>
+          <li>
+            {/* TODO: Replace with actual contact email */}
+            <a href="mailto:info@indivisiblelynnwoodwa.org">
+              Email Us
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; {currentYear} Indivisible Lynnwood. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-dark);
+    color: var(--color-gray-300);
+    padding-block: var(--space-3xl) var(--space-xl);
+    margin-top: auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  }
+
+  .footer-heading {
+    color: var(--color-white);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .footer-about p {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-base);
+  }
+
+  .footer-links ul,
+  .footer-connect ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .footer-links a,
+  .footer-connect a {
+    color: var(--color-gray-300);
+    font-size: var(--font-size-sm);
+  }
+
+  .footer-links a:hover,
+  .footer-connect a:hover {
+    color: var(--color-white);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-dark-light);
+    padding-top: var(--space-lg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+  }
+
+</style>

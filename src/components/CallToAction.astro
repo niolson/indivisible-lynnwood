@@ -1,0 +1,58 @@
+---
+interface Props {
+  heading?: string;
+  text?: string;
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  heading = 'Ready to Make a Difference?',
+  text = 'Join Indivisible Lynnwood and help build progressive power in our community.',
+  buttonText = 'Get Involved',
+  buttonHref = '/join',
+} = Astro.props;
+---
+
+<section class="cta-banner" aria-label="Call to action">
+  <div class="container cta-inner">
+    <h2 class="cta-heading">{heading}</h2>
+    <p class="cta-text">{text}</p>
+    <a href={buttonHref} class="btn btn--primary btn--lg">{buttonText}</a>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-blue-dark) 100%);
+    color: var(--color-white);
+    padding-block: var(--space-3xl);
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 700px;
+  }
+
+  .cta-heading {
+    color: var(--color-white);
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-100);
+    margin-bottom: var(--space-xl);
+  }
+
+  .cta-banner .btn--primary {
+    background-color: var(--color-white);
+    color: var(--color-blue-dark);
+    border-color: var(--color-white);
+  }
+
+  .cta-banner .btn--primary:hover {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-100);
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallToAction from '../components/CallToAction.astro';
+---
+
+<BaseLayout title="About | Indivisible Lynnwood" description="Learn about Indivisible Lynnwood — who we are, what we do, and how we're building progressive power in our community.">
+  <section class="page-header">
+    <div class="container">
+      <h1>About Us</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-content">
+      <div class="about-section">
+        <h2>Who We Are</h2>
+        <p>
+          Indivisible Lynnwood is a local grassroots group made up of concerned citizens, neighbors,
+          and community members in Lynnwood, Washington and the surrounding area. We come from diverse
+          backgrounds but share a common commitment to protecting democratic values and building a more
+          just, equitable community.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>Our Connection to Indivisible National</h2>
+        <p>
+          We are a local chapter of <a href="https://indivisible.org" target="_blank" rel="noopener noreferrer">Indivisible</a>,
+          a nationwide grassroots movement that began in 2017. Inspired by a practical guide for
+          civic engagement written by former congressional staffers, the Indivisible movement has
+          grown into thousands of local groups across every state, working together to defend
+          democracy and hold elected officials accountable.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>What We Do</h2>
+        <ul>
+          <li>
+            <strong>Community Organizing</strong> — We host regular meetings, phone banks, canvassing
+            sessions, and community events to engage our neighbors in civic life.
+          </li>
+          <li>
+            <strong>Legislative Advocacy</strong> — We track legislation at the local, state, and
+            federal levels and mobilize our members to contact their representatives on key issues.
+          </li>
+          <li>
+            <strong>Voter Engagement</strong> — We work to increase voter registration, education,
+            and turnout in our community.
+          </li>
+          <li>
+            <strong>Coalition Building</strong> — We partner with other progressive organizations
+            and community groups to amplify our impact.
+          </li>
+        </ul>
+      </div>
+
+      <div class="about-section">
+        <h2>Our Values</h2>
+        <ul>
+          <li><strong>Democracy</strong> — We believe in government of, by, and for the people.</li>
+          <li><strong>Justice</strong> — We fight for racial, social, economic, and environmental justice.</li>
+          <li><strong>Inclusion</strong> — We welcome everyone and strive to create spaces where all voices are heard.</li>
+          <li><strong>Accountability</strong> — We hold our elected officials accountable to their constituents.</li>
+          <li><strong>Action</strong> — We believe that showing up, speaking out, and taking action creates change.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    heading="Join Our Community"
+    text="Whether you're a seasoned activist or just getting started, there's a place for you at Indivisible Lynnwood."
+    buttonText="Join Us Today"
+    buttonHref="/join"
+  />
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding-block: var(--space-2xl);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+  }
+
+  .about-content {
+    max-width: 800px;
+  }
+
+  .about-section {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .about-section h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .about-section p {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-700);
+    line-height: var(--line-height-base);
+  }
+
+  .about-section ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .about-section li {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-700);
+    line-height: var(--line-height-base);
+    padding-left: var(--space-md);
+    border-left: 3px solid var(--color-blue-light);
+  }
+</style>

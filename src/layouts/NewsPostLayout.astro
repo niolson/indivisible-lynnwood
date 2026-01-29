@@ -1,0 +1,133 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  author?: string;
+  image?: string;
+  tags?: string[];
+}
+
+const { title, description, pubDate, updatedDate, author, image, tags } = Astro.props;
+
+const formattedPubDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const formattedUpdateDate = updatedDate?.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} | Indivisible Lynnwood`} description={description}>
+  <article class="news-post">
+    <div class="container">
+      <header class="post-header">
+        <div class="post-meta">
+          <time datetime={pubDate.toISOString()}>{formattedPubDate}</time>
+          {author && <span class="post-author">by {author}</span>}
+        </div>
+        <h1>{title}</h1>
+        {
+          tags && tags.length > 0 && (
+            <ul class="post-tags">
+              {tags.map((tag) => (
+                <li class="post-tag">{tag}</li>
+              ))}
+            </ul>
+          )
+        }
+      </header>
+
+      {image && <img src={image} alt="" class="post-image" />}
+
+      <div class="prose post-content">
+        <slot />
+      </div>
+
+      {
+        formattedUpdateDate && (
+          <p class="post-updated">
+            Last updated: <time datetime={updatedDate!.toISOString()}>{formattedUpdateDate}</time>
+          </p>
+        )
+      }
+
+      <nav class="post-nav">
+        <a href="/news" class="btn btn--outline btn--sm">&larr; Back to News</a>
+      </nav>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .news-post {
+    padding-block: var(--space-3xl);
+  }
+
+  .post-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .post-header h1 {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .post-meta {
+    display: flex;
+    gap: var(--space-md);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+  }
+
+  .post-author::before {
+    content: '\2022';
+    margin-right: var(--space-md);
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .post-tag {
+    background-color: var(--color-bg-alt);
+    color: var(--color-blue);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+  }
+
+  .post-image {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .post-content {
+    max-width: 720px;
+  }
+
+  .post-updated {
+    margin-top: var(--space-2xl);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    font-style: italic;
+  }
+
+  .post-nav {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+  }
+</style>

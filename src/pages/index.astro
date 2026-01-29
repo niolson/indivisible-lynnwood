@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import NewsCard from '../components/NewsCard.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('news', ({ data }) => !data.draft);
+const latestPosts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Indivisible Lynnwood — Building Progressive Power in Lynnwood, WA">
+  <Hero />
+
+  {/* Mission Section */}
+  <section class="section" aria-labelledby="mission-heading">
+    <div class="container">
+      <div class="mission">
+        <h2 id="mission-heading">Our Mission</h2>
+        <p class="mission-text">
+          Indivisible Lynnwood is a grassroots organization of neighbors and community members
+          committed to defending democracy, promoting justice, and building progressive power
+          in Lynnwood, Washington. We are part of the national
+          <a href="https://indivisible.org" target="_blank" rel="noopener noreferrer">Indivisible</a>
+          movement — thousands of local groups across the country taking action to resist
+          authoritarianism and fight for a more just society.
+        </p>
+        <p class="mission-text">
+          Through civic engagement, community organizing, and direct action, we work to ensure
+          that every voice in our community is heard and that our elected officials represent
+          the values of their constituents.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Latest News Section */}
+  {
+    latestPosts.length > 0 && (
+      <section class="section section--alt" aria-labelledby="news-heading">
+        <div class="container">
+          <h2 id="news-heading" class="section-title">Latest News</h2>
+          <div class="grid grid--3">
+            {latestPosts.map((post) => (
+              <NewsCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                slug={post.id}
+                image={post.data.image}
+                tags={post.data.tags}
+              />
+            ))}
+          </div>
+          <div class="section-more">
+            <a href="/news" class="btn btn--outline">View All News</a>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CallToAction />
+</BaseLayout>
+
+<style>
+  .mission {
+    max-width: 800px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .mission h2 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .mission-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-700);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .section-more {
+    text-align: center;
+    margin-top: var(--space-2xl);
+  }
+</style>

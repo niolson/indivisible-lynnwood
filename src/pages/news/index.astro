@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('news', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="News | Indivisible Lynnwood" description="News and updates from Indivisible Lynnwood.">
+  <section class="page-header">
+    <div class="container">
+      <h1>News</h1>
+      <p class="page-header-desc">
+        Updates, announcements, and stories from our community.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {
+        sortedPosts.length > 0 ? (
+          <div class="grid grid--3">
+            {sortedPosts.map((post) => (
+              <NewsCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                slug={post.id}
+                image={post.data.image}
+                tags={post.data.tags}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="no-posts">No news posts yet. Check back soon!</p>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding-block: var(--space-2xl);
+  }
+
+  .page-header h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header-desc {
+    color: var(--color-gray-300);
+    font-size: var(--font-size-lg);
+  }
+
+  .no-posts {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-lg);
+    padding: var(--space-3xl) 0;
+  }
+</style>

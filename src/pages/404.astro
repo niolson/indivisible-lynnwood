@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found | Indivisible Lynnwood" description="The page you're looking for could not be found.">
+  <section class="not-found">
+    <div class="container">
+      <h1>404</h1>
+      <p class="not-found-text">The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/" class="btn btn--primary">Go Home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding-block: var(--space-4xl);
+  }
+
+  .not-found h1 {
+    font-size: 6rem;
+    color: var(--color-blue-light);
+    margin-bottom: var(--space-md);
+  }
+
+  .not-found-text {
+    font-size: var(--font-size-xl);
+    color: var(--color-gray-700);
+    margin-bottom: var(--space-2xl);
+  }
+</style>
