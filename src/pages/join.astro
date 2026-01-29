@@ -19,18 +19,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           name="join"
           method="POST"
           data-netlify="true"
-          data-netlify-honeypot="bot-field"
           action="/join/?success=true"
           class="join-form"
         >
-          {/* Honeypot field for spam protection */}
-          <p class="sr-only">
-            <label>
-              Don't fill this out if you're human:
-              <input name="bot-field" />
-            </label>
-          </p>
-
           {/* Hidden form name for Netlify */}
           <input type="hidden" name="form-name" value="join" />
 
