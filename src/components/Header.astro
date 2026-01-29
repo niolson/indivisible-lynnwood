@@ -85,13 +85,15 @@ const currentPath = Astro.url.pathname;
   }
 
   .logo-text {
+    font-family: var(--font-heading);
     font-size: 0.9rem;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   .logo-text strong {
     font-size: 1.2rem;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
   }
 
   /* Navigation */
@@ -102,11 +104,14 @@ const currentPath = Astro.url.pathname;
   }
 
   .nav-link {
+    font-family: var(--font-heading);
     color: var(--color-gray-200);
     padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-sm);
-    font-size: var(--font-size-sm);
-    font-weight: 500;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     transition: color var(--transition-fast), background-color var(--transition-fast);
   }
 
